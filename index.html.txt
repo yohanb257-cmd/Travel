@@ -1,76 +1,56 @@
-
-# Create the complete travel website with all files
-import os
-
-# Create output directory
-os.makedirs('/mnt/agents/output/shanuka-travel', exist_ok=True)
-
-# index.html
-html_content = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Shanuka Iduwara - Premium Travel & Tourism. Explore the world with us. Book your dream vacation today.">
-    <meta name="keywords" content="travel, tourism, vacations, tours, destinations, Shanuka Iduwara">
+    <meta name="description" content="Shanuka Iduwara - Full Stack Web Developer. Building modern, responsive, and performant web applications.">
+    <meta name="keywords" content="Web Developer, Full Stack, JavaScript, React, Node.js, Portfolio, Shanuka Iduwara">
     <meta name="author" content="Shanuka Iduwara">
-    <meta property="og:title" content="Shanuka Iduwara - Explore the World With Us">
-    <meta property="og:description" content="Premium travel and tourism services. Discover breathtaking destinations worldwide.">
+    <meta property="og:title" content="Shanuka Iduwara | Web Developer">
+    <meta property="og:description" content="Full Stack Web Developer crafting digital experiences with code.">
     <meta property="og:type" content="website">
-    <title>Shanuka Iduwara | Explore the World With Us</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+    <title>Shanuka Iduwara | Web Developer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <div class="plane-loader">✈️</div>
+            <div class="code-loader">&lt;/&gt;</div>
             <h2>Shanuka Iduwara</h2>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
             </div>
-            <p>Preparing your journey...</p>
+            <p>Initializing portfolio...</p>
         </div>
     </div>
 
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-        <span class="toggle-icon">🌙</span>
-    </button>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
 
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </button>
-
-    <!-- Floating Icons -->
-    <div class="floating-icons">
-        <div class="float-icon" style="--delay:0s;--duration:8s;--x:10vw;--y:20vh">✈️</div>
-        <div class="float-icon" style="--delay:2s;--duration:10s;--x:80vw;--y:60vh">🌴</div>
-        <div class="float-icon" style="--delay:4s;--duration:12s;--x:50vw;--y:80vh">🧭</div>
-        <div class="float-icon" style="--delay:1s;--duration:9s;--x:90vw;--y:30vh">🏖️</div>
-        <div class="float-icon" style="--delay:3s;--duration:11s;--x:20vw;--y:70vh">🗺️</div>
-    </div>
+    <!-- Particles Background -->
+    <canvas class="particles" id="particles"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <span class="logo-icon">✈️</span>
-                <span class="logo-text">Shanuka Iduwara</span>
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-name">Shanuka</span>
+                <span class="logo-bracket">/&gt;</span>
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#destinations" class="nav-link">Destinations</a></li>
-                <li><a href="#tours" class="nav-link">Tours</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -83,444 +63,530 @@ html_content = '''<!DOCTYPE html>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-slideshow">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80')"></div>
-        </div>
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="typing-text" id="typingText"></span>
-                <span class="cursor">|</span>
+            <div class="hero-greeting reveal">Hello, I'm</div>
+            <h1 class="hero-name reveal">
+                <span class="name-highlight">Shanuka</span> Iduwara
             </h1>
-            <p class="hero-subtitle">Explore the World With Us</p>
-            <div class="hero-buttons">
-                <a href="#destinations" class="btn btn-primary">
-                    <span>Explore Destinations</span>
+            <div class="hero-role reveal">
+                <span class="role-text" id="roleText"></span>
+                <span class="cursor">|</span>
+            </div>
+            <p class="hero-desc reveal">
+                Passionate Full Stack Developer crafting scalable, user-centric web applications. 
+                I transform complex problems into elegant, efficient code.
+            </p>
+            <div class="hero-buttons reveal">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
                 <a href="#contact" class="btn btn-secondary">
-                    <span>Book Now</span>
+                    <span>Let's Talk</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                     </svg>
                 </a>
+            </div>
+            <div class="hero-socials reveal">
+                <a href="#" class="social-icon" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Dribbble">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.816zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-code-block">
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="code-dot red"></div>
+                    <div class="code-dot yellow"></div>
+                    <div class="code-dot green"></div>
+                    <span class="code-filename">developer.js</span>
+                </div>
+                <pre class="code-body"><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">name</span>: <span class="code-string">"Shanuka Iduwara"</span>,
+  <span class="code-property">role</span>: <span class="code-string">"Full Stack Developer"</span>,
+  <span class="code-property">skills</span>: [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"TypeScript"</span>],
+  <span class="code-property">passion</span>: <span class="code-string">"Building amazing web apps"</span>,
+  <span class="code-property">available</span>: <span class="code-boolean">true</span>
+};
+
+<span class="code-keyword">function</span> <span class="code-function">createMagic</span>() {
+  <span class="code-keyword">return</span> developer.<span class="code-function">build</span>(<span class="code-string">"something awesome"</span>);
+}</code></pre>
             </div>
         </div>
         <div class="scroll-indicator">
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
-            <p>Scroll to explore</p>
-        </div>
-        <div class="wave-divider">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--bg-light)"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Destinations Section -->
-    <section class="destinations section" id="destinations">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Discover</span>
-                <h2 class="section-title">Popular Destinations</h2>
-                <p class="section-desc">Handpicked destinations that promise unforgettable experiences</p>
-            </div>
-            <div class="destinations-grid">
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80" alt="Maldives" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Maldives</h3>
-                        <p>Crystal clear waters and overwater villas in paradise</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Bali</h3>
-                        <p>Tropical paradise with rich culture and stunning beaches</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.8</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&q=80" alt="Switzerland" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Switzerland</h3>
-                        <p>Alpine beauty with pristine lakes and mountain peaks</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1588258525935-6d5853eb2b9f?w=600&q=80" alt="Sri Lanka" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Sri Lanka</h3>
-                        <p>Ancient temples, tea plantations, and wildlife safaris</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★☆</div>
-                            <span>4.7</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Dubai</h3>
-                        <p>Luxury shopping, ultramodern architecture, and nightlife</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.8</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="destination-card reveal">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris" loading="lazy">
-                        <div class="card-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Paris</h3>
-                        <p>City of love, art, fashion, and world-class cuisine</p>
-                        <div class="card-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tours Section -->
-    <section class="tours section" id="tours">
-        <div class="wave-divider-top">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
-            </svg>
-        </div>
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Packages</span>
-                <h2 class="section-title">Tour Packages</h2>
-                <p class="section-desc">Curated experiences designed for every type of traveler</p>
-            </div>
-            <div class="tours-grid">
-                <div class="tour-card reveal">
-                    <div class="tour-badge">Popular</div>
-                    <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80" alt="Bali Tour" loading="lazy">
-                    </div>
-                    <div class="tour-content">
-                        <h3>5 Days in Bali</h3>
-                        <div class="tour-meta">
-                            <span class="tour-price">$899</span>
-                            <span class="tour-duration">⏱ 5 Days</span>
-                        </div>
-                        <ul class="tour-features">
-                            <li>✓ 4-star hotel accommodation</li>
-                            <li>✓ Daily breakfast & dinner</li>
-                            <li>✓ Airport transfers</li>
-                            <li>✓ Guided temple tours</li>
-                            <li>✓ Water sports activities</li>
-                        </ul>
-                        <button class="btn-book">Book Now</button>
-                    </div>
-                </div>
-                <div class="tour-card reveal">
-                    <div class="tour-badge">Romantic</div>
-                    <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80" alt="Maldives Tour" loading="lazy">
-                    </div>
-                    <div class="tour-content">
-                        <h3>Romantic Maldives</h3>
-                        <div class="tour-meta">
-                            <span class="tour-price">$1,299</span>
-                            <span class="tour-duration">⏱ 7 Days</span>
-                        </div>
-                        <ul class="tour-features">
-                            <li>✓ Overwater villa stay</li>
-                            <li>✓ All-inclusive meals</li>
-                            <li>✓ Sunset cruise</li>
-                            <li>✓ Spa treatment for two</li>
-                            <li>✓ Private beach dinner</li>
-                        </ul>
-                        <button class="btn-book">Book Now</button>
-                    </div>
-                </div>
-                <div class="tour-card reveal">
-                    <div class="tour-badge">Adventure</div>
-                    <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80" alt="Switzerland Tour" loading="lazy">
-                    </div>
-                    <div class="tour-content">
-                        <h3>Switzerland Adventure</h3>
-                        <div class="tour-meta">
-                            <span class="tour-price">$1,599</span>
-                            <span class="tour-duration">⏱ 8 Days</span>
-                        </div>
-                        <ul class="tour-features">
-                            <li>✓ Mountain resort stay</li>
-                            <li>✓ Scenic train rides</li>
-                            <li>✓ Skiing & snowboarding</li>
-                            <li>✓ Chocolate factory tour</li>
-                            <li>✓ Lake Geneva cruise</li>
-                        </ul>
-                        <button class="btn-book">Book Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="wave-divider">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--bg-light)"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery section" id="gallery">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Memories</span>
-                <h2 class="section-title">Travel Gallery</h2>
-                <p class="section-desc">Capturing moments from around the globe</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal" data-index="0">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Beach Paradise" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal tall" data-index="1">
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Mountain View" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" data-index="2">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Swiss Alps" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal wide" data-index="3">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80" alt="Lake View" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" data-index="4">
-                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80" alt="Venice" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" data-index="5">
-                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80" alt="Tropical Beach" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" data-index="6">
-                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item reveal" data-index="7">
-                    <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80" alt="Waterfall" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about section" id="about">
-        <div class="wave-divider-top">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
-            </svg>
-        </div>
         <div class="container">
             <div class="about-grid">
                 <div class="about-image reveal">
-                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Travel Adventure" loading="lazy">
-                    <div class="about-float-card">
-                        <span class="float-number">10+</span>
-                        <span class="float-text">Years Experience</span>
+                    <div class="image-frame">
+                        <div class="image-bg"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Shanuka Iduwara">
+                        <div class="experience-badge">
+                            <span class="exp-number">5+</span>
+                            <span class="exp-text">Years<br>Experience</span>
+                        </div>
                     </div>
                 </div>
                 <div class="about-content reveal">
-                    <span class="section-tag">About Us</span>
-                    <h2 class="section-title">Your Trusted Travel Partner</h2>
-                    <p>At Shanuka Iduwara, we believe that travel is not just about visiting new places — it's about creating memories that last a lifetime. Founded with a passion for exploration, we have been curating extraordinary travel experiences for over a decade.</p>
-                    <p>Our mission is to make world-class travel accessible to everyone. From pristine beaches to snow-capped mountains, from bustling cities to serene countryside, we craft journeys that inspire, rejuvenate, and transform.</p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🎯</div>
-                            <div>
-                                <h4>Personalized Itineraries</h4>
-                                <p>Tailored to your preferences</p>
-                            </div>
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">Turning Ideas Into <span class="gradient-text">Digital Reality</span></h2>
+                    <p class="about-text">
+                        I'm a passionate Full Stack Web Developer based in Sri Lanka with over 5 years of experience 
+                        building modern web applications. I specialize in creating responsive, performant, and 
+                        user-friendly solutions that solve real-world problems.
+                    </p>
+                    <p class="about-text">
+                        My journey in tech started with a curiosity about how things work on the web, which evolved 
+                        into a deep love for coding. Today, I work with cutting-edge technologies to deliver 
+                        exceptional digital experiences.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="stat-value" data-target="50">0</span>
+                            <span class="stat-label">Projects Completed</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">💎</div>
-                            <div>
-                                <h4>Premium Quality</h4>
-                                <p>Handpicked accommodations</p>
-                            </div>
+                        <div class="about-stat">
+                            <span class="stat-value" data-target="30">0</span>
+                            <span class="stat-label">Happy Clients</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🛡️</div>
-                            <div>
-                                <h4>24/7 Support</h4>
-                                <p>Always here for you</p>
-                            </div>
+                        <div class="about-stat">
+                            <span class="stat-value" data-target="5">0</span>
+                            <span class="stat-label">Years Experience</span>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="15000">0</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="850">0</div>
-                    <div class="stat-label">Tours Completed</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="45">0</div>
-                    <div class="stat-label">Countries Covered</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="98">0</div>
-                    <div class="stat-label">% Satisfaction</div>
+                    <a href="#" class="btn btn-primary" download>
+                        <span>Download CV</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section" id="testimonials">
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Reviews</span>
-                <h2 class="section-title">What Travelers Say</h2>
-                <p class="section-desc">Real stories from our happy travelers</p>
+                <span class="section-tag">My Arsenal</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonials-track" id="testimonialsTrack">
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"</div>
-                        <p class="testimonial-text">The Bali tour was absolutely magical! Every detail was perfectly planned, from the hotel to the daily excursions. Shanuka Iduwara made our honeymoon unforgettable.</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah Johnson" loading="lazy">
-                            <div>
-                                <h4>Sarah Johnson</h4>
-                                <span>Visited Bali</span>
-                            </div>
-                        </div>
-                        <div class="testimonial-stars">★★★★★</div>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <div class="skill-header">
+                        <div class="skill-icon">🎨</div>
+                        <h3>Frontend</h3>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"</div>
-                        <p class="testimonial-text">Switzerland exceeded all expectations. The scenic train rides were breathtaking and the hotel was top-notch. Highly recommend their adventure packages!</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Michael Chen" loading="lazy">
-                            <div>
-                                <h4>Michael Chen</h4>
-                                <span>Visited Switzerland</span>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML5 / CSS3</span>
+                                <span>95%</span>
                             </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:95%"></div></div>
                         </div>
-                        <div class="testimonial-stars">★★★★★</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"</div>
-                        <p class="testimonial-text">Our family trip to Sri Lanka was incredible. The wildlife safari was the highlight for our kids. Professional guides and seamless logistics throughout.</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Emma Williams" loading="lazy">
-                            <div>
-                                <h4>Emma Williams</h4>
-                                <span>Visited Sri Lanka</span>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript (ES6+)</span>
+                                <span>90%</span>
                             </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:90%"></div></div>
                         </div>
-                        <div class="testimonial-stars">★★★★★</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"</div>
-                        <p class="testimonial-text">The Maldives romantic package was pure bliss. Overwater villa, private dinners, sunset cruises — everything was picture perfect. Thank you for the memories!</p>
-                        <div class="testimonial-author">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="David & Lisa" loading="lazy">
-                            <div>
-                                <h4>David & Lisa Park</h4>
-                                <span>Visited Maldives</span>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React.js</span>
+                                <span>88%</span>
                             </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:88%"></div></div>
                         </div>
-                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Tailwind CSS</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:92%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>TypeScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:80%"></div></div>
+                        </div>
                     </div>
                 </div>
-                <div class="slider-controls">
-                    <button class="slider-btn prev" id="sliderPrev" aria-label="Previous testimonial">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <div class="slider-dots" id="sliderDots"></div>
-                    <button class="slider-btn next" id="sliderNext" aria-label="Next testimonial">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
+                <div class="skill-category reveal">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Node.js</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Express.js</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:82%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>MongoDB</span>
+                                <span>78%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:78%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>PostgreSQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>REST APIs</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:88%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <div class="skill-header">
+                        <div class="skill-icon">🛠️</div>
+                        <h3>Tools & Others</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Git & GitHub</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Docker</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>AWS / Cloud</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:65%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Figma / UI Design</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Agile / Scrum</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-progress" style="--width:80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            </div>
+            <div class="projects-filter reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web App</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">UI/UX</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="E-Commerce Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with React, Node.js, and Stripe integration.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Dashboard Analytics">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Real-time data visualization dashboard with D3.js and WebSocket updates.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>D3.js</span>
+                            <span>Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-category="mobile">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Task Manager App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Task Manager App</h3>
+                        <p>Cross-platform mobile app for task management with offline support.</p>
+                        <div class="project-tags">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>Redux</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-category="design">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="Design System">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Design System</h3>
+                        <p>Comprehensive UI component library with 50+ reusable components.</p>
+                        <div class="project-tags">
+                            <span>Figma</span>
+                            <span>Storybook</span>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80" alt="Code Editor">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Online Code Editor</h3>
+                        <p>Browser-based code editor with live preview and collaborative features.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Monaco</span>
+                            <span>WebRTC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-category="mobile">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80" alt="Fitness Tracker">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="View Live">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="project-link" aria-label="View Code">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Fitness Tracker</h3>
+                        <p>Health & fitness tracking app with workout plans and progress analytics.</p>
+                        <div class="project-tags">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>HealthKit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Journey</span>
+                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - Present</span>
+                        <h3>Senior Full Stack Developer</h3>
+                        <h4>TechCorp Solutions</h4>
+                        <p>Leading a team of 5 developers, architecting scalable web applications, and implementing CI/CD pipelines. Reduced application load time by 40% through optimization.</p>
+                        <div class="timeline-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>AWS</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2023</span>
+                        <h3>Full Stack Developer</h3>
+                        <h4>Digital Innovations Ltd</h4>
+                        <p>Developed and maintained 15+ client projects. Built RESTful APIs serving 100K+ daily requests. Implemented authentication systems and payment gateways.</p>
+                        <div class="timeline-tags">
+                            <span>Vue.js</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                            <span>Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2021</span>
+                        <h3>Frontend Developer</h3>
+                        <h4>Creative Agency</h4>
+                        <p>Created responsive websites and interactive web experiences for diverse clients. Collaborated with designers to implement pixel-perfect UI components.</p>
+                        <div class="timeline-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>jQuery</span>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2019 - 2020</span>
+                        <h3>Junior Web Developer</h3>
+                        <h4>StartUp Hub</h4>
+                        <p>Started my professional journey building landing pages and maintaining company websites. Learned modern development workflows and version control.</p>
+                        <div class="timeline-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -528,175 +594,26 @@ html_content = '''<!DOCTYPE html>
 
     <!-- Contact Section -->
     <section class="contact section" id="contact">
-        <div class="wave-divider-top">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
-            </svg>
-        </div>
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">Get in Touch</span>
-                <h2 class="section-title">Contact Us</h2>
-                <p class="section-desc">Ready to start your adventure? Reach out to us</p>
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Let's Work <span class="gradient-text">Together</span></h2>
+                <p class="section-desc">Have a project in mind? I'd love to hear about it.</p>
             </div>
-            <div class="contact-grid">
+            <div class="contact-wrapper">
                 <div class="contact-info reveal">
                     <div class="contact-card">
-                        <div class="contact-icon">📍</div>
-                        <h4>Our Office</h4>
-                        <p>123 Travel Avenue, Colombo 03<br>Sri Lanka</p>
+                        <div class="contact-icon-bg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>shanuka@developer.com</p>
+                        </div>
                     </div>
                     <div class="contact-card">
-                        <div class="contact-icon">📞</div>
-                        <h4>Phone</h4>
-                        <p>+94 77 123 4567<br>+94 11 234 5678</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">✉️</div>
-                        <h4>Email</h4>
-                        <p>info@shanukaiduwara.com<br>bookings@shanukaiduwara.com</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🕐</div>
-                        <h4>Working Hours</h4>
-                        <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sun: 10:00 AM - 4:00 PM</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
-                    </div>
-                </div>
-                <div class="contact-form-wrapper reveal">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="destination">Interested Destination</label>
-                            <select id="destination" name="destination">
-                                <option value="">Select a destination</option>
-                                <option value="maldives">Maldives</option>
-                                <option value="bali">Bali</option>
-                                <option value="switzerland">Switzerland</option>
-                                <option value="srilanka">Sri Lanka</option>
-                                <option value="dubai">Dubai</option>
-                                <option value="paris">Paris</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your dream vacation..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit" id="submitBtn">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-loader"></span>
-                            <span class="btn-success">✓ Sent!</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="map-container reveal">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58638744421!2d79.7738031582031!3d6.927079000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0; border-radius: 20px;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Office Location Map">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="wave-divider-top">
-            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--footer-bg)"/>
-            </svg>
-        </div>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#home" class="footer-logo">
-                        <span class="logo-icon">✈️</span>
-                        <span>Shanuka Iduwara</span>
-                    </a>
-                    <p>Your gateway to extraordinary travel experiences. We turn your travel dreams into reality with curated packages and personalized service.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="LinkedIn">💼</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#destinations">Destinations</a></li>
-                        <li><a href="#tours">Tour Packages</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Destinations</h4>
-                    <ul>
-                        <li><a href="#">Maldives</a></li>
-                        <li><a href="#">Bali</a></li>
-                        <li><a href="#">Switzerland</a></li>
-                        <li><a href="#">Sri Lanka</a></li>
-                        <li><a href="#">Dubai</a></li>
-                        <li><a href="#">Paris</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe for exclusive deals and travel inspiration.</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Shanuka Iduwara. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
-        <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
-        <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">&#10095;</button>
-        <div class="lightbox-content">
-            <img src="" alt="Gallery Image" id="lightboxImage">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>'''
-
-with open('/mnt/agents/output/shanuka-travel/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("index.html created successfully")
+                        <div class="contact-icon-bg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
