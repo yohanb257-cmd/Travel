@@ -1,0 +1,702 @@
+
+# Create the complete travel website with all files
+import os
+
+# Create output directory
+os.makedirs('/mnt/agents/output/shanuka-travel', exist_ok=True)
+
+# index.html
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shanuka Iduwara - Premium Travel & Tourism. Explore the world with us. Book your dream vacation today.">
+    <meta name="keywords" content="travel, tourism, vacations, tours, destinations, Shanuka Iduwara">
+    <meta name="author" content="Shanuka Iduwara">
+    <meta property="og:title" content="Shanuka Iduwara - Explore the World With Us">
+    <meta property="og:description" content="Premium travel and tourism services. Discover breathtaking destinations worldwide.">
+    <meta property="og:type" content="website">
+    <title>Shanuka Iduwara | Explore the World With Us</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="plane-loader">✈️</div>
+            <h2>Shanuka Iduwara</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Preparing your journey...</p>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Floating Icons -->
+    <div class="floating-icons">
+        <div class="float-icon" style="--delay:0s;--duration:8s;--x:10vw;--y:20vh">✈️</div>
+        <div class="float-icon" style="--delay:2s;--duration:10s;--x:80vw;--y:60vh">🌴</div>
+        <div class="float-icon" style="--delay:4s;--duration:12s;--x:50vw;--y:80vh">🧭</div>
+        <div class="float-icon" style="--delay:1s;--duration:9s;--x:90vw;--y:30vh">🏖️</div>
+        <div class="float-icon" style="--delay:3s;--duration:11s;--x:20vw;--y:70vh">🗺️</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-icon">✈️</span>
+                <span class="logo-text">Shanuka Iduwara</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="#tours" class="nav-link">Tours</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1920&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor">|</span>
+            </h1>
+            <p class="hero-subtitle">Explore the World With Us</p>
+            <div class="hero-buttons">
+                <a href="#destinations" class="btn btn-primary">
+                    <span>Explore Destinations</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span>Book Now</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll to explore</p>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--bg-light)"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations section" id="destinations">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Discover</span>
+                <h2 class="section-title">Popular Destinations</h2>
+                <p class="section-desc">Handpicked destinations that promise unforgettable experiences</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80" alt="Maldives" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Maldives</h3>
+                        <p>Crystal clear waters and overwater villas in paradise</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★★</div>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Bali</h3>
+                        <p>Tropical paradise with rich culture and stunning beaches</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★★</div>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&q=80" alt="Switzerland" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Switzerland</h3>
+                        <p>Alpine beauty with pristine lakes and mountain peaks</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★★</div>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1588258525935-6d5853eb2b9f?w=600&q=80" alt="Sri Lanka" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Sri Lanka</h3>
+                        <p>Ancient temples, tea plantations, and wildlife safaris</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★☆</div>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Dubai</h3>
+                        <p>Luxury shopping, ultramodern architecture, and nightlife</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★★</div>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card reveal">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="btn-view">View Details</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Paris</h3>
+                        <p>City of love, art, fashion, and world-class cuisine</p>
+                        <div class="card-rating">
+                            <div class="stars">★★★★★</div>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="tours section" id="tours">
+        <div class="wave-divider-top">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Packages</span>
+                <h2 class="section-title">Tour Packages</h2>
+                <p class="section-desc">Curated experiences designed for every type of traveler</p>
+            </div>
+            <div class="tours-grid">
+                <div class="tour-card reveal">
+                    <div class="tour-badge">Popular</div>
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80" alt="Bali Tour" loading="lazy">
+                    </div>
+                    <div class="tour-content">
+                        <h3>5 Days in Bali</h3>
+                        <div class="tour-meta">
+                            <span class="tour-price">$899</span>
+                            <span class="tour-duration">⏱ 5 Days</span>
+                        </div>
+                        <ul class="tour-features">
+                            <li>✓ 4-star hotel accommodation</li>
+                            <li>✓ Daily breakfast & dinner</li>
+                            <li>✓ Airport transfers</li>
+                            <li>✓ Guided temple tours</li>
+                            <li>✓ Water sports activities</li>
+                        </ul>
+                        <button class="btn-book">Book Now</button>
+                    </div>
+                </div>
+                <div class="tour-card reveal">
+                    <div class="tour-badge">Romantic</div>
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80" alt="Maldives Tour" loading="lazy">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Romantic Maldives</h3>
+                        <div class="tour-meta">
+                            <span class="tour-price">$1,299</span>
+                            <span class="tour-duration">⏱ 7 Days</span>
+                        </div>
+                        <ul class="tour-features">
+                            <li>✓ Overwater villa stay</li>
+                            <li>✓ All-inclusive meals</li>
+                            <li>✓ Sunset cruise</li>
+                            <li>✓ Spa treatment for two</li>
+                            <li>✓ Private beach dinner</li>
+                        </ul>
+                        <button class="btn-book">Book Now</button>
+                    </div>
+                </div>
+                <div class="tour-card reveal">
+                    <div class="tour-badge">Adventure</div>
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80" alt="Switzerland Tour" loading="lazy">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Switzerland Adventure</h3>
+                        <div class="tour-meta">
+                            <span class="tour-price">$1,599</span>
+                            <span class="tour-duration">⏱ 8 Days</span>
+                        </div>
+                        <ul class="tour-features">
+                            <li>✓ Mountain resort stay</li>
+                            <li>✓ Scenic train rides</li>
+                            <li>✓ Skiing & snowboarding</li>
+                            <li>✓ Chocolate factory tour</li>
+                            <li>✓ Lake Geneva cruise</li>
+                        </ul>
+                        <button class="btn-book">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--bg-light)"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery section" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Memories</span>
+                <h2 class="section-title">Travel Gallery</h2>
+                <p class="section-desc">Capturing moments from around the globe</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Beach Paradise" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal tall" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Mountain View" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80" alt="Swiss Alps" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal wide" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80" alt="Lake View" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" data-index="4">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80" alt="Venice" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" data-index="5">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80" alt="Tropical Beach" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" data-index="6">
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" data-index="7">
+                    <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80" alt="Waterfall" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="wave-divider-top">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Travel Adventure" loading="lazy">
+                    <div class="about-float-card">
+                        <span class="float-number">10+</span>
+                        <span class="float-text">Years Experience</span>
+                    </div>
+                </div>
+                <div class="about-content reveal">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">Your Trusted Travel Partner</h2>
+                    <p>At Shanuka Iduwara, we believe that travel is not just about visiting new places — it's about creating memories that last a lifetime. Founded with a passion for exploration, we have been curating extraordinary travel experiences for over a decade.</p>
+                    <p>Our mission is to make world-class travel accessible to everyone. From pristine beaches to snow-capped mountains, from bustling cities to serene countryside, we craft journeys that inspire, rejuvenate, and transform.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <div>
+                                <h4>Personalized Itineraries</h4>
+                                <p>Tailored to your preferences</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💎</div>
+                            <div>
+                                <h4>Premium Quality</h4>
+                                <p>Handpicked accommodations</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <div>
+                                <h4>24/7 Support</h4>
+                                <p>Always here for you</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="850">0</div>
+                    <div class="stat-label">Tours Completed</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="45">0</div>
+                    <div class="stat-label">Countries Covered</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Reviews</span>
+                <h2 class="section-title">What Travelers Say</h2>
+                <p class="section-desc">Real stories from our happy travelers</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <p class="testimonial-text">The Bali tour was absolutely magical! Every detail was perfectly planned, from the hotel to the daily excursions. Shanuka Iduwara made our honeymoon unforgettable.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah Johnson" loading="lazy">
+                            <div>
+                                <h4>Sarah Johnson</h4>
+                                <span>Visited Bali</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <p class="testimonial-text">Switzerland exceeded all expectations. The scenic train rides were breathtaking and the hotel was top-notch. Highly recommend their adventure packages!</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Michael Chen" loading="lazy">
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <span>Visited Switzerland</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <p class="testimonial-text">Our family trip to Sri Lanka was incredible. The wildlife safari was the highlight for our kids. Professional guides and seamless logistics throughout.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Emma Williams" loading="lazy">
+                            <div>
+                                <h4>Emma Williams</h4>
+                                <span>Visited Sri Lanka</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <p class="testimonial-text">The Maldives romantic package was pure bliss. Overwater villa, private dinners, sunset cruises — everything was picture perfect. Thank you for the memories!</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="David & Lisa" loading="lazy">
+                            <div>
+                                <h4>David & Lisa Park</h4>
+                                <span>Visited Maldives</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" id="sliderPrev" aria-label="Previous testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn next" id="sliderNext" aria-label="Next testimonial">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="wave-divider-top">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--bg-light)"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Get in Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-desc">Ready to start your adventure? Reach out to us</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h4>Our Office</h4>
+                        <p>123 Travel Avenue, Colombo 03<br>Sri Lanka</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h4>Phone</h4>
+                        <p>+94 77 123 4567<br>+94 11 234 5678</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <h4>Email</h4>
+                        <p>info@shanukaiduwara.com<br>bookings@shanukaiduwara.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🕐</div>
+                        <h4>Working Hours</h4>
+                        <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sun: 10:00 AM - 4:00 PM</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">Interested Destination</label>
+                            <select id="destination" name="destination">
+                                <option value="">Select a destination</option>
+                                <option value="maldives">Maldives</option>
+                                <option value="bali">Bali</option>
+                                <option value="switzerland">Switzerland</option>
+                                <option value="srilanka">Sri Lanka</option>
+                                <option value="dubai">Dubai</option>
+                                <option value="paris">Paris</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your dream vacation..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loader"></span>
+                            <span class="btn-success">✓ Sent!</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container reveal">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58638744421!2d79.7738031582031!3d6.927079000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0; border-radius: 20px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Office Location Map">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wave-divider-top">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L60 15C120 30 240 60 360 75C480 90 600 90 720 82.5C840 75 960 60 1080 52.5C1200 45 1320 45 1380 45L1440 45V0H1380C1320 0 1200 0 1080 0C960 0 840 0 720 0C600 0 480 0 360 0C240 0 120 0 60 0H0Z" fill="var(--footer-bg)"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <span class="logo-icon">✈️</span>
+                        <span>Shanuka Iduwara</span>
+                    </a>
+                    <p>Your gateway to extraordinary travel experiences. We turn your travel dreams into reality with curated packages and personalized service.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#tours">Tour Packages</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="#">Maldives</a></li>
+                        <li><a href="#">Bali</a></li>
+                        <li><a href="#">Switzerland</a></li>
+                        <li><a href="#">Sri Lanka</a></li>
+                        <li><a href="#">Dubai</a></li>
+                        <li><a href="#">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive deals and travel inspiration.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shanuka Iduwara. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/shanuka-travel/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("index.html created successfully")
